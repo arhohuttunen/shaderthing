@@ -2,7 +2,7 @@
 #include "shaderthingopenglwidget.h"
 
 ShaderThingOpenGLWidget::ShaderThingOpenGLWidget(QWidget *parent)
-    : QOpenGLWidget(parent), m_shaderProgram(NULL)
+    : QOpenGLWidget(parent), shaderProgram(NULL)
 {
 }
 
@@ -24,11 +24,11 @@ QString ShaderThingOpenGLWidget::compileShader(QString shader)
     if (!fragmentShader->compileSourceCode(shader))
         return fragmentShader->log();
 
-    m_shaderProgram = new QOpenGLShaderProgram(this);
-    m_shaderProgram->addShader(vertexShader);
-    m_shaderProgram->addShader(fragmentShader);
-    if (!m_shaderProgram->link())
-        return m_shaderProgram->log();
+    shaderProgram = new QOpenGLShaderProgram(this);
+    shaderProgram->addShader(vertexShader);
+    shaderProgram->addShader(fragmentShader);
+    if (!shaderProgram->link())
+        return shaderProgram->log();
 
     startTimer();
 
@@ -47,12 +47,12 @@ void ShaderThingOpenGLWidget::paintGL()
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    if (!m_shaderProgram || !m_shaderProgram->isLinked())
+    if (!shaderProgram || !shaderProgram->isLinked())
         return;
 
-    m_shaderProgram->bind();
-    m_shaderProgram->setUniformValue("time", m_elapsedTime.elapsed() / 1000.0f);
-    m_shaderProgram->setUniformValue("resolution", m_resolution);
+    shaderProgram->bind();
+    shaderProgram->setUniformValue("time", elapsedTime.elapsed() / 1000.0f);
+    shaderProgram->setUniformValue("resolution", resolution);
 
     glBegin(GL_TRIANGLE_FAN);
     glVertex3f(-1.0, -1.0, 0.0);
@@ -65,15 +65,15 @@ void ShaderThingOpenGLWidget::paintGL()
 void ShaderThingOpenGLWidget::resizeGL(int w, int h)
 {
     glViewport(0, 0, w, h);
-    m_resolution = QVector2D((float) w, (float) h);
+    resolution = QVector2D((float) w, (float) h);
 }
 
 void ShaderThingOpenGLWidget::startTimer()
 {
-    m_timer = new QTimer;
-    connect(m_timer, SIGNAL(timeout()), this, SLOT(render()));
-    m_timer->start(10);
-    m_elapsedTime.start();
+    timer = new QTimer;
+    connect(timer, SIGNAL(timeout()), this, SLOT(render()));
+    timer->start(10);
+    elapsedTime.start();
 }
 
 void ShaderThingOpenGLWidget::render()

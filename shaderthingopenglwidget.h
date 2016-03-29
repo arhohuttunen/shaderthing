@@ -29,10 +29,10 @@ private slots:
 private:
     void startTimer();
 
-    QTimer *m_timer;
-    QTime m_elapsedTime;
-    QOpenGLShaderProgram *m_shaderProgram;
-    QVector2D m_resolution;
+    QTimer *timer;
+    QTime elapsedTime;
+    QOpenGLShaderProgram *shaderProgram;
+    QVector2D resolution;
 };
 
 #endif // SHADER_THING_OPENGL_WIDGET_H
