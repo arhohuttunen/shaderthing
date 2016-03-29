@@ -19,7 +19,7 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_runButton_pressed()
 {
-    QString shaderSourceCode = ui->plainTextEdit->toPlainText();
+    QString shaderSourceCode = ui->sourceCodeEdit->toPlainText();
     QString output = ui->openGLWidget->compileShader(shaderSourceCode);
     ui->consoleOutput->setPlainText(output);
 }
@@ -35,7 +35,7 @@ void MainWindow::on_actionOpen_triggered()
 
     QByteArray contents = file.readAll();
 
-    ui->plainTextEdit->setPlainText(contents);
+    ui->sourceCodeEdit->setPlainText(contents);
 
     file.close();
 }
@@ -49,7 +49,7 @@ void MainWindow::on_actionSave_triggered()
     if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
         return;
 
-    QString contents = ui->plainTextEdit->toPlainText();
+    QString contents = ui->sourceCodeEdit->toPlainText();
 
     QTextStream out(&file);
     out << contents;
