@@ -1,4 +1,3 @@
-#include <iostream>
 #include <QFileDialog>
 #include <QTextStream>
 #include "mainwindow.h"
