@@ -23,7 +23,12 @@ private:
 
     QVector<HighlightingRule> highlightingRules;
 
+    QRegExp commentStartExpression;
+    QRegExp commentEndExpression;
+
     QTextCharFormat keywordFormat;
+    QTextCharFormat singleLineCommentFormat;
+    QTextCharFormat multiLineCommentFormat;
 };
 
 #endif // SHADERLANGUAGEHIGHLIGHTER_H
