@@ -17,7 +17,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_pressed();
+    void on_runButton_pressed();
 
 private:
     Ui::MainWindow *ui;

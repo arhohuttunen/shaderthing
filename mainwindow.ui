@@ -16,9 +16,9 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,2">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="leftVerticalLayout">
       <item>
-       <widget class="QLabel" name="label">
+       <widget class="QLabel" name="sourceCodeLabel">
         <property name="text">
          <string>Fragment shader source code:</string>
         </property>
@@ -34,14 +34,21 @@
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton">
+       <widget class="QPushButton" name="runButton">
         <property name="text">
          <string>Run</string>
         </property>
        </widget>
       </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="rightVerticalLayout" stretch="3,0,1">
       <item>
-       <widget class="QLabel" name="label_2">
+       <widget class="ShaderThingOpenGLWidget" name="openGLWidget"/>
+      </item>
+      <item>
+       <widget class="QLabel" name="consoleLabel">
         <property name="text">
          <string>Shader compilation console output:</string>
         </property>
@@ -55,9 +62,6 @@
        </widget>
       </item>
      </layout>
-    </item>
-    <item>
-     <widget class="ShaderThingOpenGLWidget" name="openGLWidget"/>
     </item>
    </layout>
   </widget>

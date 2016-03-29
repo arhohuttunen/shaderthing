@@ -15,7 +15,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::on_pushButton_pressed()
+void MainWindow::on_runButton_pressed()
 {
     QString shaderSourceCode = ui->plainTextEdit->toPlainText();
     QString output = ui->openGLWidget->compileShader(shaderSourceCode);
