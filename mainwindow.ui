@@ -25,7 +25,7 @@
        </widget>
       </item>
       <item>
-       <widget class="QPlainTextEdit" name="sourceCodeEdit">
+       <widget class="QTextEdit" name="sourceCodeEdit">
         <property name="font">
          <font>
           <family>Courier New</family>

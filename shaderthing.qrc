@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/glsl">
+        <file>keywords.txt</file>
+    </qresource>
+</RCC>

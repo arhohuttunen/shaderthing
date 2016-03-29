@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "ui_mainwindow.h"
+#include "shaderlanguagehighlighter.h"
 
 namespace Ui {
 class MainWindow;
@@ -23,6 +24,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    ShaderLanguageHighlighter *highlighter;
 };
 
 #endif // MAINWINDOW_H
