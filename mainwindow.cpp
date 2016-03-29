@@ -1,5 +1,6 @@
 #include <iostream>
 #include <QFileDialog>
+#include <QTextStream>
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "shaderthingopenglwidget.h"
@@ -35,4 +36,20 @@ void MainWindow::on_actionOpen_triggered()
     QByteArray contents = file.readAll();
 
     ui->plainTextEdit->setPlainText(contents);
+
+void MainWindow::on_actionSave_triggered()
+{
+    QString filename = QFileDialog::getSaveFileName();
+
+    QFile file(filename);
+
+    if (!file.open(QIODevice::WriteOnly | QIODevice::Text))
+        return;
+
+    QString contents = ui->plainTextEdit->toPlainText();
+
+    QTextStream out(&file);
+    out << contents;
+
+    file.close();
 }
