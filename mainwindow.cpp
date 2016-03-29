@@ -37,6 +37,9 @@ void MainWindow::on_actionOpen_triggered()
 
     ui->plainTextEdit->setPlainText(contents);
 
+    file.close();
+}
+
 void MainWindow::on_actionSave_triggered()
 {
     QString filename = QFileDialog::getSaveFileName();
