@@ -1,0 +1,16 @@
+language: cpp
+
+compiler:
+  - gcc
+
+before_install:
+  - sudo add-apt-repository ppa:beineri/opt-qt56 -y
+  - sudo apt-get update -qq
+
+install:
+  - sudo apt-get install qt56base
+
+script:
+  - source /opt/qt56/bin/qt56-env.sh
+  - qmake ShaderThing.pro
+  - make
